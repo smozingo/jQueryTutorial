@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Learning jQuery</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+</head>
+<body>
+
+<div id="greencircle"></div>
+<div class="redbox"></div>
+<div class="redbox"></div>
+<div class="bluebox"></div>
+
+<p>This is some text</p>
+<button id="btnFadeOut">Fade Out</button>
+<button id="btnFadeIn">Fade In</button>
+
+<hr>
+
+
+<!-- iframe src="http://www.schnomozingo.com"></iframe -->
+
+<script>
+
+/*    // elements can be selected by id
+    $("#greencircle").click(function() {
+       alert("Circle Clicked - this is an id");
+    });
+
+    // elements can be selected by class
+    $(".redbox").click(function() {
+       alert("Box Clicked - this is a class");
+    });
+
+    // all elements can be selected by type
+    $("div").click(function() {
+       alert("Clicked Something - this is a div (could be any html element)");
+    });
+
+
+    // Changing the content of an element
+    $("#greencircle").hover(function() {
+        // passing a value in sets the property
+       $("p").html("The text has been changed");
+
+        // passing nothing in returns the current value
+        alert($("p").html());
+    });
+
+
+    // Changing the attributes of an element
+    $(".redbox").click(function() {
+        // passing a second parameter sets the attribute
+       $("iframe").attr("src", "http://www.bbc.com");
+    });
+
+
+
+    // return css properties
+    $("div").hover(function() {
+        // 'this' returns the element we are currently working with
+        alert($(this).css("width"));
+    });
+
+
+    var formerWidth = "undefined";
+
+    // Change css properties
+    $("div").click(function() {
+        if (formerWidth == "undefined") {
+            formerWidth = $(this).css("width");
+        }
+        // 'this' returns the element we are currently working with
+        $(this).css("width", "400px");
+    });
+
+    // Change css properties
+    $("div").dblclick(function() {
+        console.log(formerWidth);
+        // 'this' returns the element we are currently working with
+        $(this).css("width", formerWidth);
+        formerWidth = "undefined";
+    });
+
+    // hide something
+    $(".bluebox").click(function() {
+        // $(this).css("display", "none");
+        // here's a shortcut:
+        //$(this).hide();
+        // and here's a fadeout:
+        $(".redbox").fadeOut(1600);
+    });
+
+
+    // fading in and out
+    $("#btnFadeOut").click(function() {
+        // the second parameter is a callback function that is
+        // called when the fadeOut function completes
+       $("p").fadeOut(1600, function() {
+           alert("Fade Out Complete");
+       });
+    });
+
+    $("#btnFadeIn").click(function() {
+        $("p").fadeIn(1600);
+    });
+ */
+
+    var formerWidth, formerHeight, formerBorderRadius, formerMarginLeft, formerMarginTop = undefined;
+    // animation
+    $("div").click(function() {
+
+        console.log("INT width:" + formerWidth);
+        console.log("INT height:" + formerHeight);
+        console.log("INT bRad:" + formerBorderRadius);
+        console.log("INT mLeft:" + formerMarginLeft);
+        console.log("INT mTop:" + formerMarginTop);
+
+        if ( formerWidth == undefined) {
+            formerWidth = $(this).css("width");
+            formerHeight = $(this).css("height");
+            formerBorderRadius = $(this).css("border-radius");
+            formerMarginLeft = $(this).css("margin-left");
+            formerMarginTop = $(this).css("margin-top");
+        }
+        console.log("SGL width:" + formerWidth);
+        console.log("SGL height:" + formerHeight);
+        console.log("SGL bRad:" + formerBorderRadius);
+        console.log("SGL mLeft:" + formerMarginLeft);
+        console.log("SGL mTop:" + formerMarginTop);
+
+        $(this).animate({
+            width:"300px",
+            height:"300px",
+            borderRadius: "150px",
+            marginLeft: "300px",
+            marginTop: "100px"
+           } ,400);
+    });
+
+    $("div").dblclick(function() {
+        console.log("DBL width:" + formerWidth);
+        console.log("DBL height:" + formerHeight);
+        console.log("DBL bRad:" + formerBorderRadius);
+        console.log("DBL mLeft:" + formerMarginLeft);
+        console.log("DBL mTop:" + formerMarginTop);
+
+        if ( formerWidth == undefined) {
+            return;
+        }
+
+        $(this).animate({
+            width:formerWidth,
+            height:formerHeight,
+            borderRadius: formerBorderRadius,
+            marginLeft: formerMarginLeft,
+            marginTop: formerMarginTop
+        } ,400);
+
+        formerWidth = undefined;
+        formerHeight = undefined;
+        formerBorderRadius = undefined;
+        formerMarginLeft = undefined;
+        formerMarginTop = undefined;
+    });
+
+
+
+</script>
+</body>
+</html>

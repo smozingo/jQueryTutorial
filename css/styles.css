@@ -1,0 +1,26 @@
+body {
+    margin:0;
+    font-family:arial, helvetica, sans-serif;
+}
+
+
+.redbox {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    margin-top: 10px;
+}
+
+#greencircle {
+    width: 100px;
+    height:100px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.bluebox {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin-top: 10px;
+}
